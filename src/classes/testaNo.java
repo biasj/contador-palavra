@@ -15,6 +15,8 @@ package classes;
 
 public class testaNo {
     public static void main(String[] args) {
+        FreqPalavra contadorPalavra = new FreqPalavra();
+        
         ABB arvre = new ABB();
         arvre.insere("gabriel");
         arvre.insere("marcelo");
@@ -32,5 +34,16 @@ public class testaNo {
         
         System.out.println("");
         System.out.println(arvre.buscaRecursiva("Marcelo"));
+        
+        String palavra = "marcelo";
+        contadorPalavra.buscaInsere(palavra, arvre);
+        contadorPalavra.buscaInsere("Phillipo", arvre);
+        contadorPalavra.buscaInsere("phillipo", arvre);
+        contadorPalavra.buscaInsere("marcelo", arvre);
+        
+        System.out.println("");
+        arvre.inOrdem();
+        System.out.println("");
+        System.out.println(arvre);
     }
 }
