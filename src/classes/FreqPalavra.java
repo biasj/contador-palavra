@@ -46,7 +46,7 @@ public class FreqPalavra {
 
              while (linha != null && !linha.equals("0")) {
                  
-                 Pattern lpPalavra = Pattern.compile("[a-zA-Z]+");
+                 Pattern lpPalavra = Pattern.compile("[a-zA-ZÀ-ú]+");
 
                  Matcher lmPalavra = lpPalavra.matcher(linha);
 
@@ -61,19 +61,20 @@ public class FreqPalavra {
   
                      // LÓGICA DE MANIPULAÇÃO DA LISTA E DO ARQUIVO
                      
-                     // busca a palavra na lista
-                     No temp = arvore.buscaRecursiva(palavra);
-
-                     // se palavra não estiver na lista
-                     if (temp == null) {
-                         // insere no início da lista
-                    	 arvore.insereRecursivo(palavra);
-
-                     } else {
-                         // pega a posição na lista e escreve no arquivo 
-                         buscaInsere(palavra, arvore);
-
-                     }
+                     this.buscaInsere(palavra, arvore);
+//                     // busca a palavra na lista
+//                     No temp = arvore.buscaRecursiva(palavra);
+//
+//                     // se palavra não estiver na lista
+//                     if (temp == null) {
+//                         // insere no início da lista
+//                    	 arvore.insereRecursivo(palavra);
+//
+//                     } else {
+//                         // pega a posição na lista e escreve no arquivo 
+//                         buscaInsere(palavra, arvore);
+//
+//                     }
                      
                      // atualizar a nova posição de leitura na linha
                      PosicaoLinha = lmPalavra.end();
