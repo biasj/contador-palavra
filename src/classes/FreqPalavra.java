@@ -62,21 +62,7 @@ public class FreqPalavra {
                      // LÓGICA DE MANIPULAÇÃO DA LISTA E DO ARQUIVO
                      
                      this.buscaInsere(palavra, arvore);
-//                     // busca a palavra na lista
-//                     No temp = arvore.buscaRecursiva(palavra);
-//
-//                     // se palavra não estiver na lista
-//                     if (temp == null) {
-//                         // insere no início da lista
-//                    	 arvore.insereRecursivo(palavra);
-//
-//                     } else {
-//                         // pega a posição na lista e escreve no arquivo 
-//                         buscaInsere(palavra, arvore);
-//
-//                     }
-                     
-                     // atualizar a nova posição de leitura na linha
+//                    
                      PosicaoLinha = lmPalavra.end();
                      
                      lbExistePalavra = lmPalavra.find();
@@ -102,6 +88,7 @@ public class FreqPalavra {
 
     }
     
+    // 
     public void buscaInsere(String palavra, ABB arvore) {
         No achado = null;
         achado = arvore.buscaRecursiva(palavra);

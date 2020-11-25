@@ -60,11 +60,14 @@ public class ABB {
     }
 
     public void insereRecursivo(String palavra) {
+        
         if(vazia()) {
             raiz = new No(palavra, 1, null, null);
             return;
         }
+        
         No novo = new No(palavra, 1, null, null);
+        
         insereRecursivo(raiz, novo);
     }
     
