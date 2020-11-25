@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 /**
  *
  * @author beatrizsato
+ * 
  * Grupo:
  * 
  * Beatriz Sato
@@ -23,18 +24,26 @@ import java.util.regex.Pattern;
  * Marcelo Frost Marchesan
  */
 public class FreqPalavra {
+    private String arquivo;
+    private ABB arvore;
+
+    public FreqPalavra(String arquivo) throws IOException {
+        this.arquivo = arquivo;
+        arvore = new ABB();
+        carregarTexto();
+    }
+
+    public ABB getArvore() {
+        return arvore;
+    }
     
-	public void carregarTexto(String arquivo) throws FileNotFoundException, IOException {
+    public void carregarTexto() throws FileNotFoundException, IOException {
         
     	 BufferedReader reader = new BufferedReader(new FileReader(arquivo));
 
-         String linha, palavra, naoPalavra;
-         String linhaEntrada[];
-         ABB arvore = new ABB();
-         int PosicaoLinha;
-         
-         naoPalavra = "";
-         
+         String linha, palavra;
+         int posicaoLinha = 0;
+                  
          try {
              
              if (reader == null) {
@@ -42,16 +51,12 @@ public class FreqPalavra {
              }
                  
              linha = reader.readLine();
-             PosicaoLinha = 0;
 
              while (linha != null && !linha.equals("0")) {
                  
                  Pattern lpPalavra = Pattern.compile("[a-zA-ZÀ-ú]+");
-
                  Matcher lmPalavra = lpPalavra.matcher(linha);
-
                  Boolean lbExistePalavra;
-
                  lbExistePalavra = lmPalavra.find();
 
                  while (lbExistePalavra) {
@@ -60,44 +65,35 @@ public class FreqPalavra {
                      palavra = linha.substring(lmPalavra.start(), lmPalavra.end());
   
                      // LÓGICA DE MANIPULAÇÃO DA LISTA E DO ARQUIVO
-                     
-                     this.buscaInsere(palavra, arvore);
-//                    
-                     PosicaoLinha = lmPalavra.end();
-                     
+                     this.buscaInsere(palavra);
+             
+                     posicaoLinha = lmPalavra.end();
                      lbExistePalavra = lmPalavra.find();
-
                  }
                  
                  // lê a próxima linha
                  linha = reader.readLine();
-                 PosicaoLinha = 0;
+                 posicaoLinha = 0;
              }
 
              // encerra comunicação entre arquivo lógico e físico, não encerra arquivo físico
              reader.close();
-
-             System.out.println(arvore);
 
          } catch (FileNotFoundException e) {
              System.out.println(e);
          } catch (IOException e) {
              System.out.println(e);
          }
-    	
-
     }
     
-    // 
-    public void buscaInsere(String palavra, ABB arvore) {
-        No achado = null;
-        achado = arvore.buscaRecursiva(palavra);
+    // verifica se palavra está na arvore e insere ou adiciona contador
+    public void buscaInsere(String palavra) {
+        No achado = arvore.buscaRecursiva(palavra);
         
         // se palavra existir na arvore, aumenta o contador
         if(achado != null) {
             int cont = achado.getFrequencia();
-            cont++;
-            achado.setFrequencia(cont);
+            achado.setFrequencia(++cont);
         } else {            
             arvore.insereRecursivo(palavra);
         }

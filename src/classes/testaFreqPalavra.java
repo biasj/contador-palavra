@@ -13,15 +13,22 @@ import java.io.IOException;
 /**
  *
  * @author beatrizsato
+ * 
+ * Grupo:
+ * 
+ * Beatriz Sato
+ * Gabriel Paiva Friedmann
+ * Marcelo Frost Marchesan
  */
-
 public class testaFreqPalavra {
     public static void main(String[] args) throws IOException {
         
-        FreqPalavra contadorPalavra = new FreqPalavra();
+        FreqPalavra contadorPalavra = new FreqPalavra("arquivo.txt");
+        System.out.println("Palavras aleatórias: ");
+        contadorPalavra.getArvore().inOrdem();
         
-        contadorPalavra.carregarTexto("arquivo.txt");
-        
-        
+        System.out.println("\nLetra de música: ");
+        FreqPalavra contadorMusica = new FreqPalavra("musica.txt");
+        contadorMusica.getArvore().inOrdem();
     }
 }
