@@ -47,7 +47,6 @@ public class ABB {
         // qual é o caso base: já chegou
         // precisa saber se vai pra dir ou esq
         if(novo.getPalavra().compareToIgnoreCase(p.getPalavra()) < 0) {
-//        if( novo.getPalavra() < p.getPalavra()) {
             if(p.getEsq() == null) {
                 p.setEsq(novo);
             } else {
@@ -92,7 +91,6 @@ public class ABB {
             return p;
       
         if(palavra.compareToIgnoreCase(p.getPalavra()) < 0)
-//        if(palavra < p.getPalavra()) 
             return buscaRecursiva(palavra, p.getEsq());
             
             else 
