@@ -27,8 +27,12 @@ public class testaFreqPalavra {
         System.out.println("Palavras aleatórias: ");
         contadorPalavra.getArvore().inOrdem();
         
-        System.out.println("\nLetra de música: ");
+        System.out.println("\nLetra de música PT BR: ");
         FreqPalavra contadorMusica = new FreqPalavra("musica.txt");
         contadorMusica.getArvore().inOrdem();
+        
+        System.out.println("\nLetra de música Ingles: ");
+        FreqPalavra contadorMusicaIngles = new FreqPalavra("musica2.txt");
+        contadorMusicaIngles.getArvore().inOrdem();
     }
 }
